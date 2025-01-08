@@ -3,7 +3,7 @@ from flask_cors import CORS
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from bson.objectid import ObjectId
-
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -76,5 +76,6 @@ def delete_all_tasks():
     tasks_collection.delete_many({})
     return jsonify({"message": "All tasks deleted successfully"}), 200
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 5000))  # Default to 5000 locally, use Netlify's port in production
+    app.run(host="0.0.0.0", port=port)
