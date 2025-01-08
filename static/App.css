@@ -93,19 +93,6 @@
     background-color: #45a049;
 }
 
-#addTaskForm input:focus {
-    border-color: #4caf50;
-    outline: none;
-}
-
-#addTaskForm input::placeholder {
-    color: #888;
-}
-
-#addTaskForm button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-}
 
 /* Edit Task Form Styling - Horizontal Layout */
 #editTaskForm {
@@ -160,25 +147,11 @@
 }
 
 #editTaskForm .cancel-button {
-    background-color: #f44336;
+    background-color: #de1102;
 }
 
 #editTaskForm .cancel-button:hover {
     background-color: #e53935;
-}
-
-#editTaskForm input:focus {
-    border-color: #4caf50;
-    outline: none;
-}
-
-#editTaskForm input::placeholder {
-    color: #888;
-}
-
-#editTaskForm button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
 }
 
 
@@ -196,7 +169,7 @@
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color: #de1102;
   }
   
   button.delete {
@@ -204,11 +177,11 @@
   }
   
   button.delete:hover {
-    background-color: #e53935;
+    background-color: #de1102;
   }
   
   button.toggle {
-    background-color: #22d567;
+    background-color: #ffffff;
   }
   
   button.toggle:hover {
