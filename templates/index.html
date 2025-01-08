@@ -13,7 +13,7 @@
             tasksTable.innerHTML = '';
             tasks.forEach(task => {
                 const row = `<tr>
-                    <td><div onclick="toggleComplete('${task.id}', ${task.completed})">${task.completed ? '✅' : '❌'}</div></td>
+                    <td><button style="background-color: #f9f9f9;", onclick="toggleComplete('${task.id}', ${task.completed})">${task.completed ? '✅' : '❌'}</button></td>
                     <td>${task.title}</td>
                     <td>${task.description}</td>
                     <td>
