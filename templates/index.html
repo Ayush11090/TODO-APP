@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Reminder App</title>
+    <link rel="stylesheet" href="/static/App.css">
+    <script>
+        async function fetchTasks() {
+            const response = await fetch('/api/tasks');
+            const tasks = await response.json();
+            const tasksTable = document.querySelector('#tasksTable tbody');
+            tasksTable.innerHTML = '';
+            tasks.forEach(task => {
+                const row = `<tr>
+                    <td><button onclick="toggleComplete('${task.id}', ${task.completed})">${task.completed ? '✅' : 'O'}</button></td>
+                    <td>${task.title}</td>
+                    <td>${task.description}</td>
+                    <td>
+                        <button onclick="showEditForm('${task.id}', '${task.title}', '${task.description}')">Edit</button>
+                        <button onclick="deleteTask('${task.id}')">Delete</button>
+                    </td>
+                </tr>`;
+                tasksTable.innerHTML += row;
+            });
+        }
+
+        async function addTask(event) {
+            event.preventDefault();
+            const title = document.querySelector('#taskTitle').value;
+            const description = document.querySelector('#taskDescription').value;
+            await fetch('/api/tasks', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title, description }),
+            });
+            fetchTasks();
+        }
+
+        async function deleteTask(id) {
+            await fetch(`/api/tasks/${id}`, { method: 'DELETE' });
+            fetchTasks();
+        }
+
+        async function toggleComplete(id, completed) {
+            await fetch(`/api/tasks/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ completed: !completed }),
+            });
+            fetchTasks();
+        }
+
+        async function deleteAllTasks() {
+            const confirmation = confirm('Are you sure you want to delete all tasks?');
+            if (confirmation) {
+                await fetch('/api/tasks', { method: 'DELETE' }); // Assuming your backend supports this route
+                fetchTasks();
+            }
+        }
+
+        function showEditForm(id, oldTitle, oldDescription) {
+            const editFormContainer = document.querySelector('#editTaskFormContainer');
+            const editForm = `
+                <form id="editTaskForm" onsubmit="editTask(event, '${id}')">
+                    <h2>Edit Task</h2>
+                    <input id="editTaskTitle" type="text" value="${oldTitle}" required>
+                    <input id="editTaskDescription" type="text" value="${oldDescription}">
+                    <button type="submit" class="submit-button">Save</button>
+                    <button type="button" onclick="cancelEdit()" class="cancel-button">Cancel</button>
+                </form>
+            `;
+            editFormContainer.innerHTML = editForm;
+            editFormContainer.style.display = 'block';
+        }
+
+        function cancelEdit() {
+            const editFormContainer = document.querySelector('#editTaskFormContainer');
+            editFormContainer.style.display = 'none';
+            editFormContainer.innerHTML = '';
+        }
+
+        async function editTask(event, id) {
+            event.preventDefault();
+            const title = document.querySelector('#editTaskTitle').value;
+            const description = document.querySelector('#editTaskDescription').value;
+            await fetch(`/api/tasks/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title, description }),
+            });
+            cancelEdit();
+            fetchTasks();
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchTasks);
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>To-Do Reminder App</h1>
+    </nav>
+    <form id="addTaskForm" onsubmit="addTask(event)">
+        <input id="taskTitle" type="text" placeholder="Task Title" required>
+        <input id="taskDescription" type="text" placeholder="Task Description">
+        <button type="submit">Add Task</button>
+    </form>
+    <div id="editTaskFormContainer" style="display: none;"></div>
+    <div class="container">
+        <button onclick="deleteAllTasks()" class="delete-all-button">Delete All Tasks</button>
+        <table id="tasksTable" class="task-table">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+       
+    </div>
+</body>
+</html>

@@ -1,0 +1,274 @@
+.navbar {
+    background-color: #313432; 
+    color: #ffffff;        
+    padding: 10px 20px;    
+    border-bottom: 2px solid #5a5c5b; 
+    font-family: 'Arial', sans-serif; 
+    font-size: 16px;        
+  }
+  
+  .navbar * {
+    color: #ffffff;        
+  }
+  
+  .container {
+    padding: 20px;
+    background-color: #ffffff;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    padding: 20px;
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .card-header h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .card-body {
+    margin-top: 10px;
+  }
+  
+/* Add Task Form Styling - Horizontal Layout */
+#addTaskForm {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row; /* Arrange items in a horizontal row */
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#addTaskForm input {
+    padding: 12px;
+    font-size: 16px;
+    width: 48%; /* Adjust width for side-by-side display */
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    height: 50px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+}
+
+#addTaskForm button {
+    width: 100%; /* Adjust width for side-by-side display */
+    background-color: #4caf50;
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    height: 50px;
+    box-sizing: border-box;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+#addTaskForm button:hover {
+    background-color: #45a049;
+}
+
+#addTaskForm input:focus {
+    border-color: #4caf50;
+    outline: none;
+}
+
+#addTaskForm input::placeholder {
+    color: #888;
+}
+
+#addTaskForm button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Edit Task Form Styling - Horizontal Layout */
+#editTaskForm {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#editTaskForm h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    width: 100%;
+}
+
+#editTaskForm input {
+    padding: 12px;
+    font-size: 16px;
+    width: 48%;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    height: 50px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+}
+
+#editTaskForm button {
+    width: 48%;
+    background-color: #4caf50;
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    height: 50px;
+    box-sizing: border-box;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+#editTaskForm button:hover {
+    background-color: #45a049;
+}
+
+#editTaskForm .cancel-button {
+    background-color: #f44336;
+}
+
+#editTaskForm .cancel-button:hover {
+    background-color: #e53935;
+}
+
+#editTaskForm input:focus {
+    border-color: #4caf50;
+    outline: none;
+}
+
+#editTaskForm input::placeholder {
+    color: #888;
+}
+
+#editTaskForm button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+
+
+  button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-right: 10px;
+    display: inline-block;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  button.delete {
+    background-color: #f44336;
+  }
+  
+  button.delete:hover {
+    background-color: #e53935;
+  }
+  
+  button.toggle {
+    background-color: #22d567;
+  }
+  
+  button.toggle:hover {
+    background-color: #d21919;
+  }
+  
+  .task-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .task-table th, .task-table td {
+    padding: 12px 20px;
+    text-align: left;
+  }
+  
+  .task-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .task-table td {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .icon {
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .icon:hover {
+    color: #007bff;
+  }
+  
+  .add-task-form input {
+    padding: 12px; 
+    font-size: 16px;
+    width: 100%;
+    border-radius: 5px;
+    border: 3px solid #ddd;
+    height: 60px; 
+    box-sizing: border-box;
+    background-color: #ffffff; 
+  }
+  
+  .add-task-form button {
+    width: 100%;
+    background-color: #4caf50;
+    color: white;
+    padding: 12px; 
+    border-radius: 5px;
+    font-size: 16px;
+    height: 60px;
+    box-sizing: border-box; 
+  }
+  
+  .add-task-form button:hover {
+    background-color: #45a049;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
